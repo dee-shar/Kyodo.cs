@@ -49,7 +49,7 @@ namespace KyodoApi
             return $"{header}.{payload}.{signature}";
         }
 
-        // Дописать после того как протрезвею и проблеваюсь от энергетиков 
+        // Дописать после того как протрезвею и блевану от энергетиков 
         private static string GenerateSignatureHash(object credentials) =>
             Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(credentials)))).ToLower();
 
