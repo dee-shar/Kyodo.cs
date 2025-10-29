@@ -1,12 +1,9 @@
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Security.Claims;
+using System.Net.Http;
 using System.Text.Json;
 using System.Net.Http.Json;
+using System.Net.Http.Headers;
+using System.Security.Cryptography;
 
 namespace KyodoApi
 {
@@ -55,6 +52,7 @@ namespace KyodoApi
         // Дописать после того как протрезвею и проблеваюсь от энергетиков 
         private static string GenerateSignatureHash(object credentials) =>
             Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(credentials)))).ToLower();
+
 
         public async Task<string> Login(string email, string password)
         {
@@ -116,7 +114,6 @@ namespace KyodoApi
             var response = await httpClient.PostAsync($"{apiUrl}/g/s/auth/resend-verification-email", null);
             return await response.Content.ReadAsStringAsync();
         }
-      
         public async Task<string> GetCircleInfo(string circleId)
         {
             var response = await httpClient.GetAsync($"{apiUrl}/{circleId}/s/circles");
