@@ -114,6 +114,7 @@ namespace KyodoApi
             var response = await httpClient.PostAsync($"{apiUrl}/g/s/auth/resend-verification-email", null);
             return await response.Content.ReadAsStringAsync();
         }
+        
         public async Task<string> GetCircleInfo(string circleId)
         {
             var response = await httpClient.GetAsync($"{apiUrl}/{circleId}/s/circles");
