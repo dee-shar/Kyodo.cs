@@ -120,6 +120,5 @@ namespace KyodoApi
             var response = await httpClient.GetAsync($"{apiUrl}/{circleId}/s/circles");
             return await response.Content.ReadAsStringAsync();
         }
-
     }
 }
