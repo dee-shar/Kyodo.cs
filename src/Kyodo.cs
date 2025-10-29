@@ -38,11 +38,11 @@ namespace KyodoApi
         {
             var header = Base64UrlEncode(
                 Encoding.UTF8.GetBytes(
-                    JsonSerializer.Serialize(new { typ = "JWT", alg = "HS256" })));
+                    JsonSerializer.Serialize(new { type = "JWT", alg = "HS256" })));
             var payload = Base64UrlEncode(
                 Encoding.UTF8.GetBytes(
                     JsonSerializer.Serialize(
-                        new { typeof_ = "xSig", expirationTime = DateTimeOffset.UtcNow.AddSeconds(10).ToUnixTimeSeconds() })));
+                        new { type = "xSig", expirationTime = DateTimeOffset.UtcNow.AddSeconds(10).ToUnixTimeSeconds() })));
             var signature = Base64UrlEncode(
                 new HMACSHA256(
                     Encoding.ASCII.GetBytes(signatureKey)).ComputeHash(Encoding.ASCII.GetBytes($"{header}.{payload}")));
@@ -114,7 +114,7 @@ namespace KyodoApi
             var response = await httpClient.PostAsync($"{apiUrl}/g/s/auth/resend-verification-email", null);
             return await response.Content.ReadAsStringAsync();
         }
-        
+
         public async Task<string> GetCircleInfo(string circleId)
         {
             var response = await httpClient.GetAsync($"{apiUrl}/{circleId}/s/circles");
