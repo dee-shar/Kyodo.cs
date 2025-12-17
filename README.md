@@ -32,10 +32,19 @@ It handles the heavy lifting of mobile integration — including **HMACSHA256 si
 ```csharp
 using KyodoApi;
 
-var api = new Kyodo();
-await api.Login("example@gmail.com", "password");
-string accountInfo = await api.GetAccountInfo();
-Console.WriteLine(accountInfo);
+namespace Application
+{
+    internal class Program
+    {
+        static async Task Main()
+        {
+            var api = new Kyodo();
+            await api.Login("example@gmail.com", "password");
+            string accountInfo = await api.GetAccountInfo();
+            Console.WriteLine(accountInfo);
+        }
+    }
+}
 ```
 
 ---
