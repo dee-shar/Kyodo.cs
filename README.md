@@ -4,7 +4,7 @@
 It allows you to authenticate, fetch user data, publish content, join circles, meet new people, and more — all directly from C# applications.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/083adfac-331f-430c-9acc-5874d982e048" width="400" alt="Kyodo logo" />
+  <img src="https://github.com/user-attachments/assets/083adfac-331f-430c-9acc-5874d982e048" width="600" alt="Kyodo logo" />
 </p>
 
 ---
