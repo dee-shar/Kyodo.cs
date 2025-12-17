@@ -15,7 +15,6 @@ namespace KyodoApi
         private readonly string signatureHash;
         private readonly HttpClient httpClient;
         private readonly string apiUrl = "https://api.kyodo.app/v1";
-        private const string signatureKey = "9d93933f-7864-4872-96b2-9541ac03cf6c";
         public Kyodo()
         {
             httpClient = new HttpClient();
@@ -45,7 +44,7 @@ namespace KyodoApi
                         new { type = "xSig", expirationTime = DateTimeOffset.UtcNow.AddSeconds(10).ToUnixTimeSeconds() })));
             var signature = Base64UrlEncode(
                 new HMACSHA256(
-                    Encoding.ASCII.GetBytes(signatureKey)).ComputeHash(Encoding.ASCII.GetBytes($"{header}.{payload}")));
+                    Encoding.ASCII.GetBytes(deviceId)).ComputeHash(Encoding.ASCII.GetBytes($"{header}.{payload}")));
             return $"{header}.{payload}.{signature}";
         }
 
